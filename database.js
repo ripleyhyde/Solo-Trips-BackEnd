@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
-const connectDB = async () => {
+const connectDb = async () => {
   const conn = await mongoose.connect(
-    "mongodb+srv://Hamed_6:nopass@clusterduck.wp9mx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    "mongodb+srv://Hamed_6:pass@clusterduck.wp9mx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
     {
       useUnifiedTopology: true,
       useNewUrlParser: true,
@@ -10,4 +10,4 @@ const connectDB = async () => {
   console.log(`mongo connected: ${conn.connection.host}`);
 };
 
-module.exports = connectDB;
+module.exports = connectDb;

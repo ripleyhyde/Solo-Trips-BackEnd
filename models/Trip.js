@@ -8,13 +8,12 @@ const tripSchema = new Schema({
   },
 
   description: {
-      type: String,
-      required: true,
-  }
-  image: {
-      type: String,
-      required: true
-  }
+    type: String,
+    required: true,
   },
-);
-module.exports = model("Trip", userSchema);
+  image: {
+    type: String,
+    required: true,
+  },
+});
+module.exports = model("Trip", tripSchema);
