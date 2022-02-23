@@ -1,4 +1,4 @@
-const { findById, findByIdAndDelete } = require("../../models/Trip");
+const { findByIdAndDelete } = require("../../models/Trip");
 const Trip = require("../../models/Trip");
 
 //Create Trip
@@ -21,18 +21,17 @@ exports.tripGet = async (req, res) => {
   }
 };
 
-//Delete Trip*
+//Delete Trip
 exports.tripDelete = async (req, res) => {
-  const tripId = req.params.tripId;
-  console.log(req.params.tripId);
-
   try {
-    const foundTrip = await Trip.findByIdAndDelete(tripId);
+    const { tripId } = req.params;
+    const foundTrip = await Trip.findByIdAndDelete({ _id: tripId });
     if (foundTrip) {
-      findByIdAndDelete(foundTrip);
       res.status(204).end();
+    } else {
+      res.status(404).json({ message: "Trip not found" });
     }
   } catch (error) {
-    res.status(404).json({ message: "Trip not found" });
+    res.status(500).json({ message: error.message });
   }
 };
